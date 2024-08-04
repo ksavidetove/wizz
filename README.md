@@ -42,8 +42,27 @@ Many other applications at Voodoo will use consume this API.
 We are planning to put this project in production. According to you, what are the missing pieces to make this project production ready? 
 Please elaborate an action plan.
 
+##### Answer 1:
+Here are the different topics that need to be addressed in order to make this project production ready:
+  - The project need a proper environment managing system as dotenv in order to define environment-specific configurations
+  - At the moment, reading the `./config/config.json` file, we can see that the production and the development databases are the same
+  - We need to implement a robust logging system like Bunyan for better error tracking and debugging.
+  - Error responses need to be more specific (404 when updating an undefined game, 500 when the database is not responsive)
+  - A system of input validation has to be implemented
+  - Some caching may be added in order to improve scalability and avoid unnecessary calls to the database
+  - Add CI/CD pipeline with tools like Jenkins, AWS CodeBuild/CodePipeline or GCP Cloud Build / Deploy
+  - Add some unit testing for critical code branches 
+
 #### Question 2:
 Let's pretend our data team is now delivering new files every day into the S3 bucket, and our service needs to ingest those files
 every day through the populate API. Could you describe a suitable solution to automate this? Feel free to propose architectural changes.
+
+#### Answer 2:
+Since the question is mentionning S3 Buckets, I will develop an answer based on AWS only.
+
+- Whenever a new file is available, we can leverage S3 Event Notifications in order to trigger a new file ingestion by the system.
+- The Notification send a message (filename, date, path) to an Amazon SQS queue
+- We can then create a Lambda Function triggered by new messages in the SQS => This lambda would call our `/api/games/populate` endpoint with the downloaded file from S3
+- In order to have a more robust API, we should implement database transactions. If a file ingestion fails, the current transaction would be aborded and we could then store the file for inspection (in case of bad formating for exemple), and for a later retry.
 
 
