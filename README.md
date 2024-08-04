@@ -1,32 +1,11 @@
-# Candidate Takehome Exercise
-This is a simple backend engineer take-home test to help assess candidate skills and practices.  We appreciate your interest in Voodoo and have created this exercise as a tool to learn more about how you practice your craft in a realistic environment.  This is a test of your coding ability, but more importantly it is also a test of your overall practices.
-
-If you are a seasoned Node.js developer, the coding portion of this exercise should take no more than 1-2 hours to complete.  Depending on your level of familiarity with Node.js, Express, and Sequelize, it may not be possible to finish in 2 hours, but you should not spend more than 2 hours.  
-
-We value your time, and you should too.  If you reach the 2 hour mark, save your progress and we can discuss what you were able to accomplish. 
-
-The theory portions of this test are more open-ended.  It is up to you how much time you spend addressing these questions.  We recommend spending less than 1 hour.  
-
-
-For the record, we are not testing to see how much free time you have, so there will be no extra credit for monumental time investments.  We are looking for concise, clear answers that demonstrate domain expertise.
-
-# Project Overview
-This project is a simple game database and consists of 2 components.  
-
-The first component is a VueJS UI that communicates with an API and renders data in a simple browser-based UI.
-
-The second component is an Express-based API server that queries and delivers data from an SQLite data source, using the Sequelize ORM.
-
-This code is not necessarily representative of what you would find in a Voodoo production-ready codebase.  However, this type of stack is in regular use at Voodoo.
-
 # Project Setup
-You will need to have Node.js, NPM, and git installed locally.  You should not need anything else.
-
-To get started, initialize a local git repo by going into the root of this project and running `git init`.  Then run `git add .` to add all of the relevant files.  Then `git commit` to complete the repo setup.  You will send us this repo as your final product.
+You will need to have Node.js, NPM, and git installed locally.
   
-Next, in a terminal, run `npm install` from the project root to initialize your dependencies.
+* In a terminal, run `npm install` from the project root to initialize your dependencies.
 
-Finally, to start the application, navigate to the project root in a terminal window and execute `npm start`
+* Run the migrations with `npx sequelize db:migrate` in order to add the new indexes.
+
+* Finally, to start the application, navigate to the project root in a terminal window and execute `npm start`
 
 You should now be able to navigate to http://localhost:3000 and view the UI.
 
